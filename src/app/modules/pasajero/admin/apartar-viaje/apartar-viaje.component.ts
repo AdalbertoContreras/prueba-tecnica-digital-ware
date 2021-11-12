@@ -39,12 +39,14 @@ export class ApartarViajeComponent implements OnInit {
   }
 
   registrarViaje() {
+    const fechaAux = new Date();
+    const dia = new Date(fechaAux.getFullYear(), fechaAux.getMonth(), fechaAux.getDate());
     console.log(this.fechaSelecionada.getFullYear() + '-' + (this.fechaSelecionada.getMonth() + 1) + '-' + this.fechaSelecionada.getDate())
     if(this.ciudadOrigenSelecionada == -1) {
       this.snack.open("Escoja la ciudad de origen.");
     } else if(this.ciudadDestinoSelecionada == -1) {
       this.snack.open("Escoja la ciudad de destino.");
-    } else if(this.fechaSelecionada.getTime() < new Date().getTime()) {
+    } else if(this.fechaSelecionada.getTime() < dia.getTime()) {
       this.snack.open("Dia selecionado no valido.");
     } else if(this.horaSelecionada == -1) {
       this.snack.open("Selecione la hora de su viaje.");
