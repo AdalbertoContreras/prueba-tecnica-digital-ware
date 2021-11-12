@@ -1,18 +1,20 @@
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Component, OnDestroy} from '@angular/core';
-import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {Subject} from "rxjs";
+import {takeUntil} from "rxjs/operators";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-pasajero',
+  templateUrl: './pasajero.component.html',
+  styleUrls: ['./pasajero.component.scss']
 })
-export class AppComponent {
-  title = 'prueba-tecnica-digital-ware';
+export class PasajeroComponent implements OnInit, OnDestroy {
 
+  isVerMenu = true;
   destroyed = new Subject<void>();
   currentScreenSize: string = 'Unknown';
+  valueDisplayActual
   displayNameMap = new Map([
     [Breakpoints.XSmall, 'XSmall'],
     [Breakpoints.Small, 'Small'],
@@ -20,8 +22,16 @@ export class AppComponent {
     [Breakpoints.Large, 'Large'],
     [Breakpoints.XLarge, 'XLarge'],
   ]);
-
-  constructor(breakpointObserver: BreakpointObserver) {
+  valuDisplaymap = new Map([
+    ['XSmall', 0],
+    ['Small', 1],
+    ['Medium', 2],
+    ['Large', 3],
+    ['XLarge', 5],
+  ]);
+  constructor(
+    breakpointObserver: BreakpointObserver,
+  ) {
     breakpointObserver
       .observe([
         Breakpoints.XSmall,
@@ -34,8 +44,9 @@ export class AppComponent {
       .subscribe(result => {
         for (const query of Object.keys(result.breakpoints)) {
           if (result.breakpoints[query]) {
-            console.log(query);
             this.currentScreenSize = this.displayNameMap.get(query) ?? 'Unknown';
+            this.valueDisplayActual = this.valuDisplaymap.get(this.currentScreenSize) ?? -1;
+            console.log(this.valueDisplayActual)
             console.log(this.currentScreenSize);
           }
         }
@@ -46,4 +57,13 @@ export class AppComponent {
     this.destroyed.next();
     this.destroyed.complete();
   }
+
+  mostrar_menu() {
+    this.isVerMenu = !this.isVerMenu;
+  }
+
+  ngOnInit(): void {
+
+  }
+
 }

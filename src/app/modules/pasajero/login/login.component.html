@@ -1,0 +1,25 @@
+<div class="w-100  d-flex flex-row align-self-center justify-content-center" style="height: 100vh">
+    <div class="login">
+        <div class="text-center font_4xl text-primary">
+            Sistema de transporte
+        </div>
+        <form [formGroup]="selectedProductForm" class="">
+            <mat-form-field class="col-12">
+                <mat-label>Usuario</mat-label>
+                <input #nombreCuenta formControlName="nombreCuenta" [(ngModel)]="usuario.nombreCuenta" type="text" matInput required>
+            </mat-form-field>
+            <mat-form-field class="col-12">
+                <mat-label>Usuario</mat-label>
+                <input #pasword formControlName="pasword" [(ngModel)]="usuario.pasword" type="password" matInput required>
+            </mat-form-field>
+            <button (click)="login()" type="button" class="btn btn-primary w-100">Login</button>
+        </form>
+        <div class="empresa text-center mt-4">
+            Viajes la continental<br>
+            @2021
+        </div>
+    </div>
+    <div>
+        <igx-snackbar #snackbar [autoHide]="true" ></igx-snackbar>
+    </div>
+</div>

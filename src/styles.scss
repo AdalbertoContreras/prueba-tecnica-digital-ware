@@ -1,1 +1,120 @@
-/* You can add global styles to this file, and also import other style files */
+// CSS Reset, comment out if not required or using a different module
+
+// @import '~minireset.css/minireset';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  background-color: #f0f0f0;
+  font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+}
+
+.text-right {
+  text-align: end;
+}
+
+.hidden {
+  display: none;
+}
+
+.viajes-grid {
+  grid-template-columns: 100px 120px 112px auto auto 80px;
+  background: #78ff64;
+  @media only screen  and (max-width: 574px){
+    grid-template-columns:  240px 40px;
+  }
+  @media only screen  and (max-width: 768px){
+    grid-template-columns: 100px 120px 112px auto auto 80px;
+  }
+}
+
+.viajes-grid:first-child{
+  background: #7bffbe !important;
+}
+
+.viajes-grid:nth-child(2n) {
+  background: #f0f0f0;
+}
+
+.viajes-grid:nth-child(2n + 1) {
+  background: #969696;
+}
+
+.font_1x {
+  font-size: 2rem;
+}
+
+.font_xs {
+  font-size: 0.625rem;
+}
+.font_sm {
+  font-size: 0.75rem;
+}
+.font_md {
+  font-size: 0.8125rem;
+}
+.font_base {
+  font-size: 875rem;
+}
+.font_lg {
+  font-size: 1rem;
+}
+.font_xl {
+  font-size: 1.125rem;
+}
+.font_2xl {
+  font-size: 1.25rem;
+}
+.font_3xl {
+  font-size: 1.5rem;
+}
+.font_4xl {
+  font-size: 1.75rem;
+}
+
+.menu_vertical_full{
+  min-width: 160px;
+  height: 100vh;
+  background: #2d8cff;
+  padding: 12px;
+}
+
+.mostrar_menu{
+  font-size: 50px;
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu_vertical_full .item {
+  margin-top: 10px;
+  border-radius: 6px;
+  text-align: center;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  background: #0002f0;
+}
+
+.empresa {
+  font-size: 12px;
+}
+
+
+@import "~igniteui-angular/lib/core/styles/themes/index";
+// Uncomment the following lines if you want to add a custom palette:
+// $primary: #731963 !default;
+// $secondary: #ce5712 !default;
+// $app-palette: igx-palette($primary, $secondary);
+
+/* autoprefixer grid: on */
+
+@include igx-core();
+@include igx-typography($font-family: $material-typeface, $type-scale: $material-type-scale);
+@include igx-theme($default-palette);

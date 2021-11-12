@@ -1,0 +1,22 @@
+<div>
+    <div class="font_1x fw-bold text-center py-4">
+         {{usuario?.nombreCuenta}}
+    </div>
+    <hr>
+    <div routerLink="/pasajero/mis_viajes" class="item">
+        Mis viajes
+    </div>
+    <div routerLink="/pasajero/apartar_viaje" class="item">
+        Nuevo viaje
+    </div>
+    <div (click)="cerrarSesion()" class="item">
+        Cerrar sesion
+    </div>
+    <div class="empresa text-center mt-4">
+        Viajes la continental<br>
+        @2021
+    </div>
+    <div>
+        <igx-snackbar #snackbar [autoHide]="true" ></igx-snackbar>
+    </div>
+</div>

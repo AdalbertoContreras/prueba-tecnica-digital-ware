@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatSelectModule } from "@angular/material/select";
+import {PasajeroComponent} from "./modules/pasajero/pasajero.component";
+import {MenuComponent} from "./component/menu/menu.component";
+import {IgxSnackbarModule} from "igniteui-angular";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PasajeroComponent,
+    MenuComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    IgxSnackbarModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

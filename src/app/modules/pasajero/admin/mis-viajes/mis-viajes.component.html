@@ -1,0 +1,78 @@
+<div class="row col-12 overflow-visible">
+    <div class="font_4xl text-center w-100 my-2 text-primary">Mis reservas</div>
+    <ng-container *ngIf="misViajes.length > 0; else noViajes">
+        <div class="grid">
+            <div class="viajes-grid d-grid  px-2">
+                <div class="text-secondary hidden d-sm-block">
+                    #
+                </div>
+                <div class="text-secondary">
+                    Fecha
+                </div>
+                <div class="hidden d-md-block text-secondary">Hora</div>
+                <div class="hidden d-md-block text-secondary">Origen</div>
+                <div class=" hidden d-sm-block text-secondary">Destino</div>
+                <div class="text-secondary text-right pe-2">Detalle</div>
+            </div>
+            <ng-container *ngFor="let viaje of misViajes; let indexOfelement=index; trackBy: trackByFn">
+                <div class="viajes-grid d-grid py-1 px-2">
+                    <div class="hidden d-sm-block">
+                        {{(indexOfelement + 1)}}
+                    </div>
+                    <div class="">
+                        {{viaje.fecha }}
+                    </div>
+                    <div class="hidden d-md-block">
+                        {{getHora(viaje.hora)?.hora}}
+                    </div>
+                    <div class="hidden d-md-block">
+                        {{getCiudadPorId(viaje.origen)?.nombre}}
+                    </div>
+                    <div class=" hidden d-sm-block">
+                        {{getCiudadPorId(viaje.destino)?.nombre}}
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="detalle"
+                                (click)="toggleDetails(viaje?.id)">
+                            <mat-icon *ngIf="viaje?.id != viajeSelecionado?.id">keyboard_arrow_down</mat-icon>
+                            <mat-icon *ngIf="viaje?.id == viajeSelecionado?.id">keyboard_arrow_up</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <hr class="p-0 m-0">
+                <div class="grid">
+                    <ng-container *ngIf="viajeSelecionado?.id === viaje.id">
+                        <ng-container *ngTemplateOutlet="rowDetailsTemplate; context: {$implicit: viaje}"></ng-container>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-template
+        #rowDetailsTemplate
+        let-product>
+        <div class="">
+            <div class="w-100 p-4">
+                <div>
+                    <div class="flex">
+                        <div class="fw-bold">
+                            Se ha registrado un viaje de {{getCiudadPorId(viajeSelecionado.origen)?.nombre}} a {{getCiudadPorId(viajeSelecionado.destino)?.nombre}} para el dia {{viajeSelecionado.fecha}} a las {{getHora(viajeSelecionado.hora)?.hora}}
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button (click)="eliminarViaje(viajeSelecionado.id)" class="eliminar" mat-stroked-button >
+                        <mat-icon >delete</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #noViajes class="w-100" >
+        <div class="w-100 text-center font_4xl" >No tiene viajes</div>
+    </ng-template>
+    <div>
+        <igx-snackbar #snackbar [autoHide]="true" ></igx-snackbar>
+    </div>
+</div>

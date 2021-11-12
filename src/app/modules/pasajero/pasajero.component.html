@@ -1,0 +1,14 @@
+<div class="d-flex" style="overflow-x: hidden">
+    <app-menu *ngIf="isVerMenu" class="menu_vertical_full"></app-menu>
+    <div (click)="mostrar_menu()" class="mostrar_menu">
+        <div *ngIf="isVerMenu">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </div>
+        <div *ngIf="!isVerMenu">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </div>
+    </div>
+    <div class="w-100 p-4">
+        <router-outlet ></router-outlet>
+    </div>
+</div>

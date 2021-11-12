@@ -1,0 +1,57 @@
+<div class="col-12 pb-4">
+    <div class="font_4xl text-center text-primary">
+        Apartar nuevo viaje
+    </div>
+    <div class="row">
+        <mat-label class="font_2xl text-secondary mt-2 col-12">Selecione su lugar de origen</mat-label>
+        <div class="col-md-6 p-1">
+            <mat-label class="text-info">Pais de origen</mat-label>
+            <mat-select [(ngModel)]="paisOrigenSelecionado" (selectionChange)="filtrarCiudadesOrigen(paisOrigen.value)" #paisOrigen>
+              <mat-option disabled="true"  [value]="-1">Selecione un pais</mat-option>
+              <mat-option  *ngFor="let pais of paisesOrigen" [value]="pais.id">{{pais.nombre}}</mat-option>
+            </mat-select>
+        </div>
+        <div class="col-md-6 p-1">
+            <mat-label class="text-info">Ciudad de origen</mat-label>
+            <mat-select [(ngModel)]="ciudadOrigenSelecionada" >
+              <mat-option disabled="true"  [value]="-1">Selecione una ciudad</mat-option>
+              <mat-option *ngFor="let ciudad of ciudadesOrigenFiltradas" [value]="ciudad.id">{{ciudad.nombre}}</mat-option>
+            </mat-select>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+      <mat-label class="font_2xl text-secondary mt-2 col-12">Selecione su lugar de destino</mat-label>
+      <div class="col-md-6">
+          <mat-label class="text-info">Pais de destino</mat-label>
+        <mat-select [(ngModel)]="paisDestinoSelecionado" (selectionChange)="filtrarCiudadesDestino(paisDestino.value)" #paisDestino>
+          <mat-option disabled="true"  [value]="-1">Selecione un pais</mat-option>
+          <mat-option  *ngFor="let pais of paisesDestino" [value]="pais.id">{{pais.nombre}}</mat-option>
+        </mat-select>
+
+      </div>
+      <div class="col-md-6">
+          <mat-label class="text-info">Ciudad de destino</mat-label>
+        <mat-select [(ngModel)]="ciudadDestinoSelecionada" >
+          <mat-option disabled="true"  [value]="-1">Selecione una ciudad</mat-option>
+          <mat-option *ngFor="let ciudad of ciudadesDestinoFiltradas" [value]="ciudad.id">{{ciudad.nombre}}</mat-option>
+        </mat-select>
+
+      </div>
+      <hr>
+      <mat-label class="mb-2 font_2xl text-secondary mt-2 col-12">Selecione la fecha que quieres viajar</mat-label>
+      <igx-calendar [(ngModel)]="fechaSelecionada" locale="ES" #calendar (selected)="onSelection()" [showWeekNumbers]="true"></igx-calendar>
+    </div>
+    <div class="w-100 pb-2">
+        <mat-label class="text-info">Selecione una hora para su viaje</mat-label>
+        <mat-select [(ngModel)]="horaSelecionada" >
+            <mat-option disabled="true"  [value]="-1">Selecione una hora</mat-option>
+            <mat-option *ngFor="let hora of horas" [value]="hora.id">{{hora.hora}}</mat-option>
+        </mat-select>
+
+    </div>
+    <div>
+        <igx-snackbar #snackbar [autoHide]="true" ></igx-snackbar>
+    </div>
+    <button (click)="registrarViaje()" class="btn bt w-100 p-12 bg-success text-white">Registrar</button>
+</div>

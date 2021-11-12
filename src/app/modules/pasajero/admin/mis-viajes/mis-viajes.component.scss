@@ -1,0 +1,33 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.detalle {
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.detalle mat-icon{
+  font-size: 14px;
+  padding-right: 4px;
+}
+
+.eliminar {
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: brown;
+  border-style: solid;
+  background: red;
+}
+
+.eliminar {
+  color: white;
+}
