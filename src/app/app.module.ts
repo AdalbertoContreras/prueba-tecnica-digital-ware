@@ -11,7 +11,7 @@ import {IgxSnackbarModule} from "igniteui-angular";
   declarations: [
     AppComponent,
     PasajeroComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserAnimationsModule,

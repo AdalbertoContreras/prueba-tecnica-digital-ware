@@ -8,6 +8,7 @@ import {PasajeroComponent} from "./pasajero.component";
 import { MenuComponent } from '../../component/menu/menu.component';
 import { CerrarSesionDialogComponent } from '../../component/cerrar-sesion-dialog/cerrar-sesion-dialog.component';
 import {IgxSnackbarModule} from "igniteui-angular";
+import {Error404Component} from "../error/error404/error404.component";
 
 const exampleRoutes: Route[] = [
   {
@@ -19,7 +20,8 @@ const exampleRoutes: Route[] = [
 @NgModule({
   declarations: [
     PasajeroComponent,
-    CerrarSesionDialogComponent
+    CerrarSesionDialogComponent,
+    Error404Component
   ],
   imports: [
     CommonModule,
